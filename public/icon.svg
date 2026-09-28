@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="28" fill="#3D664B"/>
+  <!-- Chimney -->
+  <rect x="68" y="24" width="8" height="16" rx="2" fill="#D99313"/>
+  <!-- Roof -->
+  <path d="M16 48 L50 20 L84 48" stroke="#FAF6EE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Walls -->
+  <rect x="25" y="44" width="50" height="38" rx="6" fill="#FAF6EE"/>
+  <!-- Door -->
+  <path d="M42 82 V58 C42 53.5 45.5 50 50 50 C54.5 50 58 53.5 58 58 V82 Z" fill="#C85A32"/>
+  <!-- Cozy window -->
+  <circle cx="50" cy="38" r="4.5" fill="#D99313"/>
+</svg>

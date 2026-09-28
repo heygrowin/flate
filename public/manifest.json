@@ -1,0 +1,16 @@
+{
+  "name": "Our Home - Messina Student Flat",
+  "short_name": "Our Home",
+  "description": "Cozy, multilingual house management portal for our shared student flat in Messina, Italy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFBF7",
+  "theme_color": "#3D664B",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
