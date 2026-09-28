@@ -1,18 +1,32 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
+import { getFirestore, type Firestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDc0dTq5Qj9Tpni9IxjFtXS_0HhQMuu4Vw",
-  authDomain: "cozy-flatemate.firebaseapp.com",
-  projectId: "cozy-flatemate",
-  storageBucket: "cozy-flatemate.firebasestorage.app",
-  messagingSenderId: "557817627316",
-  appId: "1:557817627316:web:e1a92687b1a735e32b8de1",
-  measurementId: "G-YH9GC283HM"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
+export const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+  firebaseConfig.projectId
+);
+
 // Initialize Firebase (singleton pattern for Next.js)
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-const db = getFirestore(app);
+let app: FirebaseApp | null = null;
+let db: Firestore | null = null;
+
+if (isFirebaseConfigured) {
+  try {
+    app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+    db = getFirestore(app);
+  } catch (error) {
+    console.warn('Failed to initialize Firebase:', error);
+  }
+}
 
 export { app, db, firebaseConfig };
